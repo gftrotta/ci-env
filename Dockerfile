@@ -9,3 +9,6 @@ COPY bin/ssh-config.sh /usr/bin
 
 # enable wget
 RUN apt-get install -y wget
+
+# enable cURL
+RUN apt-get install -y curl
