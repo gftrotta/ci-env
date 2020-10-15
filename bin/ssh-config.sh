@@ -11,7 +11,7 @@ IP=$1
 KEY=$2
 PORT=22
 if [ $# -eq 3 ]; then
-	IP=$3
+	PORT=$3
 fi
 
 echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
