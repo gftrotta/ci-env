@@ -18,4 +18,4 @@ echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
 chmod 700 ~/.ssh/id_rsa
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-ssh-keyscan -H $IP -p $PORT >> ~/.ssh/known_hosts
+ssh-keyscan -p $PORT -H $IP >> ~/.ssh/known_hosts
