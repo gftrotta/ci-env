@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USAGE="Usage: $(basename $0) <ip> <ssh-private-key>"
+USAGE="Usage: $(basename $0) <ip> <ssh-private-key> [port]"
 
 if [ $# -lt 2 ]; then
 	echo "$USAGE"
@@ -9,9 +9,13 @@ fi
 
 IP=$1
 KEY=$2
+PORT=22
+if [ $# -eq 3 ]; then
+	IP=$3
+fi
 
 echo "$KEY" | tr -d '\r' > ~/.ssh/id_rsa
 chmod 700 ~/.ssh/id_rsa
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
-ssh-keyscan -H $IP >> ~/.ssh/known_hosts
+ssh-keyscan -H $IP -p $PORT >> ~/.ssh/known_hosts
